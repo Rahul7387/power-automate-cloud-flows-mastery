@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flow Fundamentals — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#107C10;background:#DFF6DD;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .app-shell{margin:0 24px 24px;border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);background:#fff;}
+  .topbar{background:#fff;border-bottom:1px solid var(--border);padding:10px 16px;display:flex;align-items:center;gap:12px;}
+  .topbar .title{font-weight:700;font-size:14px;}
+  .topbar .status{margin-left:auto;font-size:11.5px;background:#DFF6DD;color:var(--success);padding:3px 10px;border-radius:10px;font-weight:600;}
+
+  .canvas{padding:26px 20px;background:linear-gradient(#eceaea 1px, transparent 1px) 0 0/24px 24px,linear-gradient(90deg, #eceaea 1px, transparent 1px) 0 0/24px 24px, #fbfbfb;display:flex;flex-direction:column;align-items:center;}
+  .node{background:#fff;border:1px solid var(--border);border-radius:8px;width:360px;box-shadow:0 2px 6px rgba(0,0,0,.06);}
+  .node-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid #f1f0ef;}
+  .node-icon{width:30px;height:30px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:15px;color:#fff;flex-shrink:0;}
+  .node-title{font-size:12.5px;font-weight:700;}
+  .node-sub{font-size:10.5px;color:var(--text-secondary);}
+  .node-body{padding:9px 14px;font-size:11.5px;color:var(--text-secondary);}
+  .ic-trigger{background:#8a8886;} .ic-cond{background:#F2C811;color:#5c4a00;} .ic-mail{background:#0078D4;} .ic-teams{background:#5059C9;} .ic-term{background:#A80000;}
+
+  .connector{width:2px;height:24px;background:#c8c6c4;}
+  .branch-row{display:flex;gap:36px;}
+  .branch-col{display:flex;flex-direction:column;align-items:center;}
+  .branch-label{font-size:10px;font-weight:700;color:#fff;padding:2px 10px;border-radius:10px;margin-bottom:8px;}
+  .branch-label.yes{background:var(--success);}
+  .branch-label.no{background:var(--warn);}
+
+  .rh{margin:16px 24px 24px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 20px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .rh h4{margin:0 0 8px;font-size:12.5px;}
+  table{width:100%;border-collapse:collapse;font-size:11.5px;}
+  th{text-align:left;padding:6px 8px;color:var(--text-secondary);font-size:10.5px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+  td{padding:7px 8px;border-bottom:1px solid #f4f3f2;}
+  .rs{font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;}
+  .rs.ok{background:#DFF6DD;color:var(--success);}
+  .rs.skip{background:#F3F2F1;color:var(--text-secondary);}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 1</span><span class="tier">🟢 BEGINNER</span></div>
+  <div class="desc">New Hire Document Notifier — the fundamental trigger → condition → action pattern every later flow builds on.</div>
+
+  <div class="app-shell">
+    <div class="topbar"><span class="title">New Hire Document Notifier</span><span class="status">● Turned on</span></div>
+    <div class="canvas">
+      <div class="node"><div class="node-head"><div class="node-icon ic-trigger">⚡</div><div><div class="node-title">When a file is created (properties only)</div><div class="node-sub">SharePoint — Offer Letters library</div></div></div></div>
+      <div class="connector"></div>
+      <div class="node"><div class="node-head"><div class="node-icon ic-cond">◆</div><div><div class="node-title">Check file is ready</div><div class="node-sub">File type = .pdf AND Status = Ready</div></div></div></div>
+      <div class="connector"></div>
+      <div class="branch-row">
+        <div class="branch-col">
+          <div class="branch-label yes">YES</div>
+          <div class="node" style="width:250px;">
+            <div class="node-head"><div class="node-icon ic-mail">✉</div><div><div class="node-title">Notify hiring manager</div><div class="node-sub">Outlook — Send an email (V2)</div></div></div>
+          </div>
+          <div class="connector"></div>
+          <div class="node" style="width:250px;">
+            <div class="node-head"><div class="node-icon ic-teams">💬</div><div><div class="node-title">Post to HR Operations</div><div class="node-sub">Teams — Adaptive Card</div></div></div>
+          </div>
+        </div>
+        <div class="branch-col">
+          <div class="branch-label no">NO</div>
+          <div class="node" style="width:250px;">
+            <div class="node-head"><div class="node-icon ic-term">⛔</div><div><div class="node-title">Skipped — not ready</div><div class="node-sub">Terminate: Cancelled</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rh">
+      <h4>Run history</h4>
+      <table>
+        <tr><th>Run</th><th>Trigger file</th><th>Path taken</th><th>Status</th></tr>
+        <tr><td>#221</td><td>Offer_Priya_S.pdf</td><td>Yes — notified</td><td><span class="rs ok">Succeeded</span></td></tr>
+        <tr><td>#220</td><td>Draft_notes.docx</td><td>No — skipped</td><td><span class="rs skip">Cancelled</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> a clean, descriptively-named trigger → condition → action structure, with the "No" branch explicitly terminating as "Cancelled" rather than silently doing nothing — so run history reads clearly at a glance, the habit every later, more complex flow in this repo depends on.
+  </div>
+
+</body>
+</html>
