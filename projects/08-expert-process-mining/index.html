@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Process Mining — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; --purple:#8764B8; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#a80000;background:#FDE7E9;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .dash{margin:0 24px 24px;background:#0B1B3A;border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18);}
+  .dash-top{padding:16px 22px;color:#fff;background:linear-gradient(90deg,#0F6CBD,#3d2a8a);font-weight:700;font-size:14px;}
+
+  .obj-model{padding:22px;background:#0e2249;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;align-items:center;}
+  .obj{border-radius:20px;padding:10px 16px;font-size:11px;font-weight:700;color:#fff;border:2px solid rgba(255,255,255,.3);}
+  .obj.pr{background:#0F6CBD;} .obj.ap{background:#8764B8;} .obj.po{background:#D83B9A;} .obj.inv{background:#CA5010;} .obj.pay{background:#107C10;}
+  .obj-arrow{color:#7fa8e0;font-size:14px;}
+
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 22px;background:#fff;}
+  .kpi{background:#F7F8FC;border:1px solid var(--border);border-radius:8px;padding:12px 14px;}
+  .kpi .n{font-size:19px;font-weight:800;}
+  .kpi .n.bad{color:var(--warn);}
+  .kpi .l{font-size:10.5px;color:var(--text-secondary);margin-top:2px;}
+
+  .insight{margin:0 24px 24px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 18px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .insight .tag{font-size:9.5px;font-weight:800;color:var(--purple);text-transform:uppercase;display:block;margin-bottom:6px;}
+  .insight p{font-size:12.5px;color:var(--text-secondary);line-height:1.6;margin:0 0 10px;}
+  .rec-box{background:#F3E9FB;border:1px solid #E1D4F3;border-radius:8px;padding:10px 12px;font-size:12px;color:#3d2a54;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 8</span><span class="tier">🔴 EXPERT</span></div>
+  <div class="desc">Object-centric process mining across the procurement process — Process Intelligence studio. Static reference only.</div>
+
+  <div class="dash">
+    <div class="dash-top">Process Intelligence Studio — Procurement Process Model</div>
+    <div class="obj-model">
+      <div class="obj pr">PurchaseRequest</div>
+      <span class="obj-arrow">↔</span>
+      <div class="obj ap">Approval</div>
+      <span class="obj-arrow">↔</span>
+      <div class="obj po">PurchaseOrder</div>
+      <span class="obj-arrow">↔</span>
+      <div class="obj inv">Invoice ×2</div>
+      <span class="obj-arrow">↔</span>
+      <div class="obj pay">Payment ×2</div>
+    </div>
+    <div class="kpis">
+      <div class="kpi"><div class="n">6.4 days</div><div class="l">Avg. request-to-payment cycle time</div></div>
+      <div class="kpi"><div class="n bad">3.2 days</div><div class="l">Avg. wait — Finance approval step</div></div>
+      <div class="kpi"><div class="n">14%</div><div class="l">Rework rate — approvals sent back</div></div>
+      <div class="kpi"><div class="n">61%</div><div class="l">Invoices on the automated fast-path</div></div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <span class="tag">✨ Copilot in Process Mining — natural language summary</span>
+    <p>"The Finance approval step accounts for roughly half of total cycle time. Most delays cluster around requests over ₹50,000, which route to a second approver not currently notified proactively."</p>
+    <span class="tag">✔ Reviewed against underlying model — confirmed accurate</span>
+    <div class="rec-box"><b>Recommendation:</b> add a proactive reminder/escalation flow for the second-approver step on requests over ₹50,000 — estimated to cut average cycle time by ~1.1 days based on current wait-time distribution.</div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> purchase requests, approvals, POs, invoices, and payments are modeled as related but distinct objects — with genuine one-to-many relationships (one PO, two invoices, two payments) that a flat single-case model would have hidden. The Copilot-generated summary is explicitly marked as reviewed against the underlying model, and the finding is translated into one scoped, quantified recommendation rather than a vague "automate approvals" directive.
+  </div>
+
+</body>
+</html>
