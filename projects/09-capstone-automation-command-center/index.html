@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Procure-to-Pay Command Center — Capstone Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:linear-gradient(90deg,#0066FF,#8764B8);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#742774;background:#F3E9FB;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .hub{margin:0 24px 24px;background:#0B1B3A;border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,.18);}
+  .hub-top{background:linear-gradient(120deg,#0066FF 0%,#3d2a8a 100%);color:#fff;padding:22px 28px;}
+  .hub-top .eyebrow{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#cfe0ff;font-weight:700;}
+  .hub-top h1{font-size:20px;margin:6px 0;}
+  .hub-top p{font-size:12.5px;color:#dbe8ff;max-width:560px;margin:0;}
+
+  .flow-chain{display:flex;gap:10px;padding:16px 22px;background:#11244a;overflow-x:auto;}
+  .fnode{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:8px;padding:8px 12px;color:#dbe4fb;font-size:10.5px;min-width:130px;text-align:center;}
+  .fnode .n{font-weight:800;font-size:9px;color:#9db6f0;display:block;margin-bottom:3px;}
+  .farrow{align-self:center;color:#5878b8;}
+
+  .tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:18px 22px 22px;background:#f7f8fc;}
+  .tile{background:#fff;border:1px solid var(--border);border-radius:8px;padding:12px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .tile .badge2{font-size:9px;font-weight:800;padding:2px 7px;border-radius:8px;display:inline-block;margin-bottom:5px;}
+  .tile .badge2.beg{background:#DFF6DD;color:#107C10;}
+  .tile .badge2.int{background:#FFF1D6;color:#8a6100;}
+  .tile .badge2.adv{background:#FDE0CB;color:#8a3800;}
+  .tile .badge2.exp{background:#FDE7E9;color:#a80000;}
+  .tile .name{font-size:11.5px;font-weight:700;}
+  .tile .body{font-size:10px;color:var(--text-secondary);line-height:1.4;margin-top:3px;}
+
+  .metrics{display:flex;gap:16px;padding:0 24px 26px;flex-wrap:wrap;}
+  .metric-card{flex:1;min-width:170px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;}
+  .metric-card .num{font-size:20px;font-weight:800;color:#0B1B3A;}
+  .metric-card .lbl{font-size:11px;color:var(--text-secondary);margin-top:2px;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">CAPSTONE — ALL 8 PROJECTS UNIFIED</span><span class="tier">⭐ CAPSTONE</span></div>
+  <div class="desc">Global Procure-to-Pay Automation Command Center — build, govern, and continuously improve, in one platform. Static reference only.</div>
+
+  <div class="hub">
+    <div class="hub-top">
+      <div class="eyebrow">Enterprise Automation Platform</div>
+      <h1>Procure-to-Pay Command Center</h1>
+      <p>Purchase request → approval → PO → invoice → payment, one governed solution, measured continuously.</p>
+    </div>
+
+    <div class="flow-chain">
+      <div class="fnode"><span class="n">STEP 1</span>Submit Request<br>P1/P2 pattern</div>
+      <div class="farrow">→</div>
+      <div class="fnode"><span class="n">STEP 2</span>Nightly PO Batch<br>P3 pattern</div>
+      <div class="farrow">→</div>
+      <div class="fnode"><span class="n">STEP 3</span>CRM/ERP Sync<br>P4 pattern</div>
+      <div class="farrow">→</div>
+      <div class="fnode"><span class="n">STEP 4</span>Invoice Pipeline<br>P5 pattern</div>
+      <div class="farrow">→</div>
+      <div class="fnode"><span class="n">STEP 5</span>AI Triage<br>P6 pattern</div>
+    </div>
+
+    <div class="tiles">
+      <div class="tile"><span class="badge2 beg">P1/P2</span><div class="name">Request &amp; Approval</div><div class="body">Adaptive Card human-in-the-loop</div></div>
+      <div class="tile"><span class="badge2 int">P3</span><div class="name">Nightly PO Batch</div><div class="body">Filter-before-loop, Switch routing</div></div>
+      <div class="tile"><span class="badge2 int">P4</span><div class="name">CRM/ERP Sync</div><div class="body">Gateway + Azure AD HTTP</div></div>
+      <div class="tile"><span class="badge2 adv">P5</span><div class="name">Invoice Pipeline</div><div class="body">Try/Catch/Finally + retries</div></div>
+      <div class="tile"><span class="badge2 adv">P6</span><div class="name">AI Triage + Notify</div><div class="body">Shared child flow, confidence-gated AI</div></div>
+      <div class="tile"><span class="badge2 exp">P7</span><div class="name">ALM &amp; Governance</div><div class="body">One Solution, pipeline, DLP, Service Principal</div></div>
+      <div class="tile"><span class="badge2 exp">P8</span><div class="name">Process Mining</div><div class="body">Object-centric model + KPIs</div></div>
+      <div class="tile"><span class="badge2 exp">⭐</span><div class="name">Quarterly Roadmap</div><div class="body">Data-driven next investment</div></div>
+    </div>
+
+    <div class="metrics">
+      <div class="metric-card"><div class="num">6.4 → 5.3 days</div><div class="lbl">Cycle time, before → after latest fix</div></div>
+      <div class="metric-card"><div class="num">100%</div><div class="lbl">Flows governed under one Solution</div></div>
+      <div class="metric-card"><div class="num">0</div><div class="lbl">Flows still owned by a personal account</div></div>
+      <div class="metric-card"><div class="num">1</div><div class="lbl">Quantified recommendation this quarter</div></div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> every stage of the procure-to-pay process is built from a proven pattern earlier in this repo, governed together as one Solution with proper ALM, and measured with object-centric process mining that turns into a concrete, scoped recommendation each quarter — the platform doesn't just work on day one, it keeps getting better.
+  </div>
+
+</body>
+</html>
