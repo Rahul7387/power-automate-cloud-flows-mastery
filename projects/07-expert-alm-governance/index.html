@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Enterprise ALM & Governance — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; --red:#A80000; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#a80000;background:#FDE7E9;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .pipeline{margin:0 24px 24px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:24px;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .pipe-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap;justify-content:center;}
+  .pipe-node{border-radius:8px;padding:10px 14px;font-size:11px;font-weight:700;text-align:center;min-width:110px;border:2px solid var(--border);background:#fafafa;}
+  .pipe-node.pass{border-color:var(--success);background:#DFF6DD;color:#1e5c1e;}
+  .pipe-node.gate{border-color:#8a6100;background:#FFF1D6;color:#8a6100;}
+  .pipe-arrow{font-size:16px;color:#b0aeac;}
+
+  .envs{display:flex;gap:16px;margin:0 24px 24px;flex-wrap:wrap;}
+  .env-card{flex:1;min-width:220px;border-radius:8px;padding:14px 16px;color:#fff;}
+  .env-card.dev{background:#605E5C;}
+  .env-card.test{background:#0F6CBD;}
+  .env-card.prod{background:#8a1c1c;}
+  .env-card .t{font-weight:800;font-size:13px;margin-bottom:6px;}
+  .env-card .r{font-size:11px;opacity:.9;padding:3px 0;}
+
+  .cards{display:flex;gap:16px;margin:0 24px 24px;flex-wrap:wrap;}
+  .card{flex:1;min-width:280px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  .row{display:flex;justify-content:space-between;font-size:11.5px;padding:6px 0;border-bottom:1px solid #f2f1f0;}
+  .row:last-child{border-bottom:none;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 7</span><span class="tier">🔴 EXPERT</span></div>
+  <div class="desc">ProcurementFlowSuite governed as one Solution with a Power Platform pipeline. Static reference only.</div>
+
+  <div class="pipeline">
+    <div class="pipe-row">
+      <div class="pipe-node">Export managed solution v1.3</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-node gate">Solution Checker gate</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-node">Deploy to Test</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-node">Smoke test run</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-node gate">Approval gate</div>
+      <span class="pipe-arrow">→</span>
+      <div class="pipe-node pass">Deploy to Prod ✔</div>
+    </div>
+  </div>
+
+  <div class="envs">
+    <div class="env-card dev"><div class="t">Dev</div><div class="r">Solution v1.3 — unmanaged</div><div class="r">Personal connections OK</div></div>
+    <div class="env-card test"><div class="t">Test</div><div class="r">Solution v1.3 — managed</div><div class="r">Smoke-tested automatically</div></div>
+    <div class="env-card prod"><div class="t">Prod (Managed Environment)</div><div class="r">Solution v1.3 — managed</div><div class="r">Runs as Service Principal</div><div class="r">DLP policy enforced</div></div>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <h4>Connection references &amp; environment variables</h4>
+      <div class="row"><span>SharePoint connection</span><span>ref: SP_Conn_ProcurementSuite</span></div>
+      <div class="row"><span>SQL Server connection</span><span>ref: SQL_ERP_Conn</span></div>
+      <div class="row"><span>API base URL</span><span>env var — differs per environment</span></div>
+      <div class="row"><span>Approval threshold</span><span>env var — Dev: 100, Prod: 2500</span></div>
+    </div>
+    <div class="card">
+      <h4>Licensing decision — this suite</h4>
+      <div class="row"><span>Invoice pipeline flow</span><span><b>Process license</b> — shared infra</span></div>
+      <div class="row"><span>Personal notification flow (1 user)</span><span><b>Premium user license</b></span></div>
+      <div class="row"><span>Admin inventory view</span><span>flow deps + connections visible</span></div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> the exact same solution and flow logic gets promoted Dev → Test → Prod through a gated pipeline with zero code changes — only the connection references and environment variable values differ per environment. Production runs under a Service Principal, not a personal account, and the licensing decision per flow is made deliberately rather than defaulted.
+  </div>
+
+</body>
+</html>
