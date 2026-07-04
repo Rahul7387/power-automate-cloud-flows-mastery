@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Child Flows, AI Builder & Copilot — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --purple:#8764B8; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#8a3800;background:#FDE0CB;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+  .stage{display:flex;gap:24px;margin:0 24px 24px;flex-wrap:wrap;}
+
+  .copilot-panel{flex:1.1;min-width:320px;background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .cp-head{background:linear-gradient(90deg,#0F6CBD,#8764B8);color:#fff;padding:10px 16px;font-size:13px;font-weight:700;}
+  .cp-body{padding:14px;background:#fafafa;}
+  .prompt-box{background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12px;margin-bottom:10px;}
+  .prompt-box .label{font-size:9.5px;font-weight:800;color:var(--purple);text-transform:uppercase;display:block;margin-bottom:4px;}
+  .gen-node{border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-size:11px;margin-bottom:6px;background:#fff;}
+  .gen-node .t{font-weight:700;}
+  .ai-tag{display:inline-block;background:#F3E9FB;color:#5c2d82;font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:4px;}
+
+  .sidepanel{flex:1;min-width:280px;display:flex;flex-direction:column;gap:16px;}
+  .card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  .child-badge{display:inline-block;background:#DFF6DD;color:var(--success);font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:6px;}
+  .row{display:flex;justify-content:space-between;font-size:11.5px;padding:6px 0;border-bottom:1px solid #f2f1f0;}
+  .row:last-child{border-bottom:none;}
+  .confidence-low{background:#FFF4CE;border:1px solid #ecd98a;color:#5c4a00;padding:7px 9px;border-radius:6px;font-size:11px;margin-top:8px;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 6</span><span class="tier">🟠 ADVANCED</span></div>
+  <div class="desc">AI-powered ticket triage, scaffolded with Copilot in cloud flows, calling a shared reusable child flow. Static reference only.</div>
+
+  <div class="stage">
+    <div class="copilot-panel">
+      <div class="cp-head">✨ Copilot in cloud flows</div>
+      <div class="cp-body">
+        <div class="prompt-box">
+          <span class="label">Your prompt</span>
+          "When a new item is created in the Tickets SharePoint list, classify its category and priority using AI, then notify the right team."
+        </div>
+        <div class="gen-node"><div class="t">✓ Trigger: When an item is created</div><div style="font-size:10px;color:var(--text-secondary);">SharePoint — Tickets list</div></div>
+        <div class="gen-node"><div class="t">✓ AI Builder: Extract information from text</div>
+          <span class="ai-tag">added manually after Copilot scaffold</span>
+        </div>
+        <div class="gen-node"><div class="t">✓ Switch: Category</div></div>
+        <div class="gen-node"><div class="t">✓ Run a Child Flow: Notify-Stakeholders-v1</div>
+          <span class="ai-tag">reused, not rebuilt</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidepanel">
+      <div class="card">
+        <h4>Child flow: Notify-Stakeholders-v1 <span class="child-badge">shared</span></h4>
+        <div class="row"><span>Trigger</span><span>Called by a parent flow</span></div>
+        <div class="row"><span>Inputs</span><span>recipients, subject, message, urgency</span></div>
+        <div class="row"><span>Called by</span><span>3 parent flows currently</span></div>
+      </div>
+
+      <div class="card">
+        <h4>AI Builder classification result</h4>
+        <div class="row"><span>Category</span><span>Billing</span></div>
+        <div class="row"><span>Priority</span><span>High</span></div>
+        <div class="row"><span>Confidence</span><span>91%</span></div>
+        <div class="confidence-low">⚠ A second ticket scored 54% confidence — routed to manual triage instead of auto-classified.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> Copilot scaffolded the trigger and initial structure from a plain-language description; the AI Builder step and child-flow call were added deliberately afterward and are labeled as such. Low-confidence classifications are routed to manual review instead of being auto-actioned — the same discipline used in the companion Copilot Studio repo.
+  </div>
+
+</body>
+</html>
