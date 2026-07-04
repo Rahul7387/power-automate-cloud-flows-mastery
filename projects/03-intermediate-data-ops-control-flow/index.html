@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Data Ops & Control Flow — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; --purple:#8764B8; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#8a6100;background:#FFF1D6;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .app-shell{margin:0 24px 24px;border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);background:#fff;}
+  .topbar{background:#fff;border-bottom:1px solid var(--border);padding:10px 16px;font-weight:700;font-size:14px;}
+  .canvas{padding:24px 20px;background:linear-gradient(#eceaea 1px, transparent 1px) 0 0/24px 24px,linear-gradient(90deg, #eceaea 1px, transparent 1px) 0 0/24px 24px, #fbfbfb;display:flex;flex-direction:column;align-items:center;}
+  .node{background:#fff;border:1px solid var(--border);border-radius:8px;width:380px;box-shadow:0 2px 6px rgba(0,0,0,.06);margin-bottom:0;}
+  .node-head{display:flex;align-items:center;gap:10px;padding:9px 14px;}
+  .node-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;color:#fff;flex-shrink:0;}
+  .node-title{font-size:12px;font-weight:700;}
+  .node-sub{font-size:10px;color:var(--text-secondary);}
+  .connector{width:2px;height:18px;background:#c8c6c4;}
+  .ic-t{background:#8a8886;} .ic-v{background:#8764B8;} .ic-f{background:#F2C811;color:#5c4a00;} .ic-sw{background:#0078D4;} .ic-loop{background:#107C10;} .ic-do{background:#D83B01;}
+
+  .compose-preview{background:#0B1B3A;color:#c9e0ff;font-family:'Cascadia Code',Consolas,monospace;font-size:9.5px;padding:8px 10px;margin:0 14px 10px;border-radius:5px;}
+
+  .switch-branches{display:flex;gap:14px;margin-top:4px;}
+  .switch-branches .b{border:1px solid var(--border);border-radius:6px;padding:6px 10px;font-size:10px;background:#fafafa;text-align:center;}
+
+  .side{margin:0 24px 24px;display:flex;gap:16px;flex-wrap:wrap;}
+  .card{flex:1;min-width:280px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  table{width:100%;border-collapse:collapse;font-size:11px;}
+  th{text-align:left;padding:5px 6px;color:var(--text-secondary);font-size:9.5px;text-transform:uppercase;border-bottom:1px solid var(--border);}
+  td{padding:5px 6px;border-bottom:1px solid #f4f3f2;}
+  .chip{font-size:9px;font-weight:700;padding:1px 6px;border-radius:6px;}
+  .chip.new{background:#DEECF9;color:#0078D4;}
+  .chip.processed{background:#DFF6DD;color:var(--success);}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 3</span><span class="tier">🟡 INTERMEDIATE</span></div>
+  <div class="desc">Bulk Order Processing from Excel — variables, filter-before-loop, Switch branching, and Compose-driven debugging.</div>
+
+  <div class="app-shell">
+    <div class="topbar">Bulk Order Processing — nightly run</div>
+    <div class="canvas">
+      <div class="node"><div class="node-head"><div class="node-icon ic-t">⏰</div><div><div class="node-title">Recurrence — nightly 2:00 AM (Asia/Kolkata)</div></div></div></div>
+      <div class="connector"></div>
+      <div class="node"><div class="node-head"><div class="node-icon ic-v">𝑥</div><div><div class="node-title">Initialize variable: varProcessedCount = 0</div></div></div></div>
+      <div class="connector"></div>
+      <div class="node"><div class="node-head"><div class="node-icon ic-f">▼</div><div><div class="node-title">Filter array — Status = 'New'</div><div class="node-sub">reduces 340 rows → 42 rows before looping</div></div></div></div>
+      <div class="connector"></div>
+      <div class="node">
+        <div class="node-head"><div class="node-icon ic-sw">⑃</div><div><div class="node-title">Switch: OrderType</div></div></div>
+        <div class="switch-branches" style="padding:0 14px 12px;">
+          <div class="b">Standard<br>28 orders</div>
+          <div class="b">Express<br>12 orders</div>
+          <div class="b">Default<br>2 flagged</div>
+        </div>
+      </div>
+      <div class="connector"></div>
+      <div class="node"><div class="node-head"><div class="node-icon ic-loop">🔁</div><div><div class="node-title">Apply to each — Compose line item</div></div></div>
+        <div class="compose-preview">{ "orderId": "ORD-4821", "customer": "Aster Mfg", "amount": 18500, "flag": "none" }</div>
+      </div>
+      <div class="connector"></div>
+      <div class="node"><div class="node-head"><div class="node-icon ic-do">↻</div><div><div class="node-title">Do until — batch update Excel rows</div><div class="node-sub">exit: count ≥ 42 OR 20 iterations (hard cap)</div></div></div></div>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card">
+      <h4>Sample rows after Filter array</h4>
+      <table>
+        <tr><th>Order</th><th>Type</th><th>Status</th></tr>
+        <tr><td>ORD-4821</td><td>Standard</td><td><span class="chip new">New</span></td></tr>
+        <tr><td>ORD-4822</td><td>Express</td><td><span class="chip new">New</span></td></tr>
+        <tr><td>ORD-4809</td><td>Standard</td><td><span class="chip processed">Processed</span> (excluded)</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h4>Why filter-before-loop matters here</h4>
+      <div style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">
+        340 total rows → filtered to 42 <b>before</b> the loop starts. Looping over all 340 and checking status inside each iteration would run 8x more actions for the same result.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> the dataset is reduced with Filter array before any loop runs, Switch cleanly separates three order types instead of nested Conditions, Compose makes each iteration's shaped data visible in run history, and the Do-until batch update is capped by both a count condition and a hard iteration limit.
+  </div>
+
+</body>
+</html>
