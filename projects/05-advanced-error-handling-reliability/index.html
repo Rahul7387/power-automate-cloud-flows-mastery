@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Error Handling & Reliability — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; --red:#A80000; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#8a3800;background:#FDE0CB;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .app-shell{margin:0 24px 24px;border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);background:#fff;}
+  .topbar{background:#fff;border-bottom:1px solid var(--border);padding:10px 16px;font-weight:700;font-size:14px;}
+  .canvas{padding:22px 20px;background:#fbfbfb;display:flex;gap:16px;flex-wrap:wrap;justify-content:center;}
+
+  .scope{border-radius:10px;padding:12px;min-width:260px;flex:1;}
+  .scope.try{background:#EFF6FC;border:2px solid #0F6CBD;}
+  .scope.catch{background:#FDE7E9;border:2px solid #A80000;}
+  .scope.finally{background:#F3E9FB;border:2px solid #8764B8;}
+  .scope-title{font-size:11.5px;font-weight:800;text-transform:uppercase;margin-bottom:8px;}
+  .scope.try .scope-title{color:#0a4a80;}
+  .scope.catch .scope-title{color:#7a1010;}
+  .scope.finally .scope-title{color:#4a2d70;}
+  .node{background:#fff;border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-size:10.5px;margin-bottom:6px;}
+  .node .t{font-weight:700;}
+  .node .s{color:var(--text-secondary);font-size:9.5px;}
+  .run-after{font-size:9.5px;font-style:italic;color:var(--text-secondary);margin-top:6px;}
+
+  .side{margin:0 24px 24px;display:flex;gap:16px;flex-wrap:wrap;}
+  .card{flex:1;min-width:280px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  .log-row{display:flex;justify-content:space-between;font-size:11px;padding:6px 0;border-bottom:1px solid #f2f1f0;}
+  .log-row:last-child{border-bottom:none;}
+  .teams-alert{background:#FDE7E9;border:1px solid #f0b0b6;color:#7a1010;padding:8px 10px;border-radius:6px;font-size:11px;margin-top:6px;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 5</span><span class="tier">🟠 ADVANCED</span></div>
+  <div class="desc">Resilient Invoice Ingestion Pipeline — the Try/Catch/Finally Scope pattern with tuned retries and durable exception logging.</div>
+
+  <div class="app-shell">
+    <div class="topbar">Resilient Invoice Ingestion Pipeline</div>
+    <div class="canvas">
+      <div class="scope try">
+        <div class="scope-title">Scope: Try</div>
+        <div class="node"><div class="t">AI Builder: Extract invoice fields</div></div>
+        <div class="node"><div class="t">Dataverse: Create Invoice record</div></div>
+        <div class="node"><div class="t">HTTP: Notify ERP</div><div class="s">retry: 4x, exponential backoff</div></div>
+      </div>
+      <div class="scope catch">
+        <div class="scope-title">Scope: Catch</div>
+        <div class="run-after">runs after Try: failed, timed out, OR skipped</div>
+        <div class="node"><div class="t">Compose: capture error details</div></div>
+        <div class="node"><div class="t">Dataverse: Create ExceptionLog</div></div>
+        <div class="node"><div class="t">Teams: Alert AP Lead</div><div class="s">deep link to failed run</div></div>
+      </div>
+      <div class="scope finally">
+        <div class="scope-title">Scope: Finally</div>
+        <div class="run-after">runs after Try: succeeded, failed, skipped, timed out (all)</div>
+        <div class="node"><div class="t">Update Dataverse: ProcessingStatus</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="side">
+    <div class="card">
+      <h4>ExceptionLog (Dataverse)</h4>
+      <div class="log-row"><span>INV-8821 — HTTP action</span><span style="color:var(--red);font-weight:700;">503 Service Unavailable</span></div>
+      <div class="log-row"><span>INV-8819 — AI Builder</span><span style="color:var(--success);font-weight:700;">✔ (no error)</span></div>
+      <div class="teams-alert">🔔 Alert sent to AP Lead — "INV-8821 failed after 4 retries. <a href="#">Open failed run →</a>"</div>
+    </div>
+    <div class="card">
+      <h4>Circuit-breaker safeguard</h4>
+      <div style="font-size:11.5px;color:var(--text-secondary);line-height:1.6;">
+        If the ERP endpoint fails <b>&gt;5 times in 1 hour</b> (queryable from ExceptionLog), stop retrying and escalate immediately — protects a struggling downstream system instead of hammering it further.
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> the Catch scope's "Configure run after" checks all three failure states (failed, timed out, skipped) — not just "failed" — and the Finally scope always updates status regardless of outcome. The exception is logged durably to Dataverse, independent of Power Automate's own run-history retention, with a working deep link for fast triage.
+  </div>
+
+</body>
+</html>
