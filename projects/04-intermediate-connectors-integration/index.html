@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Connectors & Integration Hub — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; --orange:#CA5010; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--pa);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#8a6100;background:#FFF1D6;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .mesh{margin:0 24px 24px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:26px;box-shadow:0 4px 14px rgba(0,0,0,.06);}
+  .systems{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;}
+  .sys-box{border-radius:8px;padding:14px 18px;text-align:center;font-size:12px;font-weight:700;min-width:140px;color:#fff;}
+  .sys-box.dv{background:#0F6CBD;} .sys-box.gw{background:#605E5C;} .sys-box.sql{background:#CC2927;} .sys-box.api{background:var(--orange);}
+  .sys-box .sub{font-size:10px;font-weight:400;opacity:.85;margin-top:3px;}
+  .arrow{font-size:20px;color:#b0aeac;}
+  .gw-note{text-align:center;font-size:10.5px;color:var(--warn);margin-top:6px;font-weight:700;}
+
+  .steps{display:flex;gap:16px;margin:0 24px 24px;flex-wrap:wrap;}
+  .card{flex:1;min-width:270px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  .flow-node{border:1px solid var(--border);border-radius:6px;padding:7px 9px;font-size:11px;margin-bottom:6px;background:#fafafa;}
+  .flow-node .t{font-weight:700;}
+  .flow-node .s{color:var(--text-secondary);font-size:10px;}
+  .auth-badge{display:inline-block;background:#DFF6DD;color:var(--success);font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:6px;margin-top:6px;}
+  .log-row{display:flex;justify-content:space-between;font-size:11px;padding:5px 0;border-bottom:1px solid #f2f1f0;}
+  .log-row:last-child{border-bottom:none;}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">POWER AUTOMATE — PROJECT 4</span><span class="tier">🟡 INTERMEDIATE</span></div>
+  <div class="desc">CRM-to-ERP Nightly Sync — premium connectors, the on-premises data gateway, and authenticated HTTP integration.</div>
+
+  <div class="mesh">
+    <div class="systems">
+      <div class="sys-box dv">Dataverse<br><span class="sub">Account records</span></div>
+      <div class="arrow">→</div>
+      <div class="sys-box gw">On-Prem Gateway<br><span class="sub">single point of failure ⚠</span></div>
+      <div class="arrow">→</div>
+      <div class="sys-box sql">SQL Server ERP<br><span class="sub">upsert target</span></div>
+      <div class="arrow">→</div>
+      <div class="sys-box api">Partner API<br><span class="sub">HTTP + Azure AD</span></div>
+    </div>
+    <div class="gw-note">⚠ Recommended for production: gateway cluster, not a single machine</div>
+  </div>
+
+  <div class="steps">
+    <div class="card">
+      <h4>Flow structure</h4>
+      <div class="flow-node"><div class="t">Dataverse: List rows (paginated)</div><div class="s">Account, modified last 24h</div></div>
+      <div class="flow-node"><div class="t">Apply to each</div><div class="s">per account</div></div>
+      <div class="flow-node"><div class="t">SQL Server: Get row by ID</div><div class="s">via gateway — check exists</div></div>
+      <div class="flow-node"><div class="t">Update row / Insert row</div><div class="s">manual upsert pattern</div></div>
+      <div class="flow-node"><div class="t">HTTP (Premium): POST /confirm</div><div class="s">Partner API</div>
+        <span class="auth-badge">✔ Azure AD client credentials</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>SyncLog (Dataverse) — durable audit trail</h4>
+      <div class="log-row"><span>ACC-2291 → ERP</span><span style="color:var(--success);font-weight:700;">✔ Synced</span></div>
+      <div class="log-row"><span>ACC-2305 → ERP</span><span style="color:var(--success);font-weight:700;">✔ Synced</span></div>
+      <div class="log-row"><span>ACC-2312 → Partner API</span><span style="color:var(--warn);font-weight:700;">✕ HTTP 200, body: error</span></div>
+      <div style="font-size:10.5px;color:var(--text-secondary);margin-top:8px;">Row 3 shows why checking the response <b>body</b>, not just the status code, matters — a 200 doesn't always mean the business operation succeeded.</div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> the manual upsert pattern against SQL Server, Azure AD authentication (not a static token) on the outbound HTTP call, and an independent Dataverse SyncLog that catches a "200 but actually failed" case the platform's own success/fail status would have missed.
+  </div>
+
+</body>
+</html>
