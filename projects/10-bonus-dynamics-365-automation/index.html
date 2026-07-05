@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dynamics 365 Sales Automation — Power Automate Mockup</title>
+<style>
+  :root{ --pa:#0066FF; --d365:#0F6CBD; --surface:#F3F2F1; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; --success:#107C10; --warn:#D83B01; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:var(--surface);color:var(--text);}
+  .badge-wrap{padding:20px 24px 0;display:flex;gap:8px;align-items:center;}
+  .badge{display:inline-block;background:var(--d365);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:10px;}
+  .tier{font-size:11px;font-weight:800;color:#0a4a80;background:#DEECF9;padding:3px 10px;border-radius:10px;}
+  .desc{font-size:12.5px;color:var(--text-secondary);padding:6px 24px 18px;max-width:900px;}
+
+  .app-shell{margin:0 24px 24px;border:1px solid var(--border);border-radius:6px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,.06);background:#fff;}
+  .d365-top{background:var(--d365);color:#fff;padding:9px 16px;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:10px;}
+  .cmd-bar{background:#faf9f8;border-bottom:1px solid var(--border);padding:8px 16px;display:flex;gap:10px;align-items:center;font-size:11.5px;}
+  .cmd-btn{padding:5px 10px;border:1px solid var(--border);border-radius:4px;background:#fff;font-weight:600;}
+  .cmd-btn.highlight{background:var(--pa);color:#fff;border-color:var(--pa);}
+
+  .bpf{margin:10px 16px 0;background:#fbfbfb;border:1px solid var(--border);border-radius:6px;display:flex;overflow:hidden;font-size:11px;}
+  .bpf .stage{flex:1;text-align:center;padding:7px 4px;color:var(--text-secondary);border-right:1px solid var(--border);}
+  .bpf .stage:last-child{border-right:none;}
+  .bpf .stage.done{background:#DFF6DD;color:#1e5c1e;font-weight:600;}
+  .bpf .stage.current{background:var(--d365);color:#fff;font-weight:700;}
+
+  .form-body{padding:14px 16px;}
+  .field-row{display:flex;justify-content:space-between;font-size:12px;padding:7px 0;border-bottom:1px solid #f2f1f0;}
+  .field-row .label{color:var(--text-secondary);}
+  .field-row .val{font-weight:600;}
+
+  .stage2{display:flex;gap:16px;margin:0 24px 24px;flex-wrap:wrap;}
+  .card{flex:1;min-width:280px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 16px;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+  .card h4{margin:0 0 8px;font-size:12.5px;}
+  .trigger-config{background:#0B1B3A;color:#c9e0ff;font-family:'Cascadia Code',Consolas,monospace;font-size:10.5px;padding:10px;border-radius:6px;line-height:1.7;}
+  .trigger-config .k{color:#7fd88f;} .trigger-config .v{color:#ffd166;}
+  .test-row{display:flex;justify-content:space-between;font-size:11.5px;padding:6px 0;border-bottom:1px solid #f2f1f0;}
+  .test-row:last-child{border-bottom:none;}
+  .test-result{font-size:10px;font-weight:700;padding:2px 8px;border-radius:8px;}
+  .test-result.no-fire{background:#F3F2F1;color:var(--text-secondary);}
+  .test-result.fired{background:#DFF6DD;color:var(--success);}
+
+  .panel-caption{padding:6px 24px 26px;font-size:12px;color:var(--text-secondary);max-width:900px;line-height:1.6;}
+  .panel-caption strong{color:var(--text);}
+</style>
+</head>
+<body>
+
+  <div class="badge-wrap"><span class="badge">DYNAMICS 365 + POWER AUTOMATE — PROJECT 10</span><span class="tier">🔵 BONUS / SPECIALIZED</span></div>
+  <div class="desc">Lead-to-Opportunity trigger patterns inside Dynamics 365 Sales — filtered Dataverse triggers, a command-bar instant flow, and BPF coexistence. Static reference only.</div>
+
+  <div class="app-shell">
+    <div class="d365-top">🔷 Dynamics 365 Sales — Opportunity: Aster Manufacturing — Server Upgrade</div>
+    <div class="cmd-bar">
+      <div class="cmd-btn">Save</div>
+      <div class="cmd-btn">Qualify</div>
+      <div class="cmd-btn highlight">⚡ Send to Contract Review</div>
+      <div class="cmd-btn">Deactivate</div>
+    </div>
+    <div class="bpf">
+      <div class="stage done">Qualify</div>
+      <div class="stage current">Develop</div>
+      <div class="stage">Propose</div>
+      <div class="stage">Close</div>
+    </div>
+    <div class="form-body">
+      <div class="field-row"><span class="label">Topic</span><span class="val">Server Upgrade — Aster Mfg</span></div>
+      <div class="field-row"><span class="label">Est. Revenue</span><span class="val">₹18,50,000</span></div>
+      <div class="field-row"><span class="label">Owner</span><span class="val">R. Shah</span></div>
+      <div class="field-row"><span class="label">Contract Review Requested</span><span class="val" style="color:var(--success);">✔ true — set by command-bar flow</span></div>
+    </div>
+  </div>
+
+  <div class="stage2">
+    <div class="card">
+      <h4>Automatic trigger config (Lead → Qualified)</h4>
+      <div class="trigger-config">
+<span class="k">connector:</span> <span class="v">Dataverse (current)</span><br>
+<span class="k">trigger:</span> <span class="v">When a row is modified</span><br>
+<span class="k">table:</span> <span class="v">Lead</span><br>
+<span class="k">scope:</span> <span class="v">Post-operation (After)</span><br>
+<span class="k">filtering_attributes:</span> <span class="v">statuscode</span><br>
+<span class="k">filter_expression:</span> <span class="v">statuscode eq 3</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h4>Test results — filter working correctly</h4>
+      <div class="test-row"><span>Edited: Lead phone number</span><span class="test-result no-fire">Did not fire ✔</span></div>
+      <div class="test-row"><span>Edited: Lead notes field</span><span class="test-result no-fire">Did not fire ✔</span></div>
+      <div class="test-row"><span>Changed: statuscode → Qualified</span><span class="test-result fired">Fired ✔</span></div>
+    </div>
+  </div>
+
+  <div class="panel-caption">
+    <strong>What this shows:</strong> the command-bar button triggers a user-initiated instant flow bound directly to this specific Opportunity's record context, while a separate, properly-filtered automatic trigger only fires on the one Lead field change that actually matters — proven by the test log showing irrelevant edits correctly ignored. The Business Process Flow stages continue guiding the user in the UI, entirely independent of either flow.
+  </div>
+
+</body>
+</html>
