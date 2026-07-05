@@ -19,10 +19,23 @@ A component-by-component Power Automate **cloud flow** training portfolio: nine 
 | 🔴 Expert | 7 | [Enterprise ALM & Governance](./projects/07-expert-alm-governance/README.md) | Solutions, pipelines, DLP, licensing strategy | [🔗 Preview](https://rahul7387.github.io/power-automate-cloud-flows-mastery/projects/07-expert-alm-governance/index.html) |
 | 🔴 Expert | 8 | [Process Mining](./projects/08-expert-process-mining/README.md) | Object-centric process intelligence | [🔗 Preview](https://rahul7387.github.io/power-automate-cloud-flows-mastery/projects/08-expert-process-mining/index.html) |
 | ⭐ Capstone | 9 | [Procure-to-Pay Command Center](./projects/09-capstone-automation-command-center/README.md) | All eight capabilities, one governed platform | [🔗 Preview](https://rahul7387.github.io/power-automate-cloud-flows-mastery/projects/09-capstone-automation-command-center/index.html) |
+| 🔵 Bonus | 10 | [Dynamics 365 Sales Automation](./projects/10-bonus-dynamics-365-automation/README.md) | Dataverse trigger filtering, command-bar flows, BPF coexistence | [🔗 Preview](https://rahul7387.github.io/power-automate-cloud-flows-mastery/projects/10-bonus-dynamics-365-automation/index.html) |
 
 > Live previews are static HTML/CSS mockups approximating the real Power Automate designer look & feel (flow canvas, approval cards, run history, admin dashboards). They are visual references only, not functional flows.
 
-📋 **[Best Practices & Limitations Reference](./BEST-PRACTICES-AND-LIMITATIONS.md)** — a consolidated, standalone checklist pulling together every best practice and platform limitation called out across all nine projects, plus a licensing quick-reference table. Read this before building anything in production.
+📋 **[Best Practices & Limitations Reference](./BEST-PRACTICES-AND-LIMITATIONS.md)** — a consolidated, standalone checklist pulling together every best practice and platform limitation called out across all projects, plus a licensing quick-reference table. Read this before building anything in production.
+
+---
+
+## 📖 Deep-dive guides
+
+Three standalone reference guides, meant to be read alongside the projects rather than as projects themselves:
+
+| Guide | Read it for |
+|---|---|
+| **[Power Automate Platform Walkthrough](./guides/power-automate-platform-walkthrough.md)** | A full tour of the product surface — My flows, the designer, connectors/connections, Solutions, Approvals, Process mining, Monitor, and the admin center — read this first if you're new to the tool. |
+| **[Expressions & Functions Reference](./guides/expressions-and-functions-reference.md)** | Every core category of the workflow definition language (string, collection, logical, conversion, date/time, math) with practical, copy-adaptable recipes — the reference to keep open during Project 3 and beyond. |
+| **[Dynamics 365 Integration Guide](./guides/dynamics-365-integration-guide.md)** | Dataverse vs. legacy Dynamics 365 connector, filtering attributes/expressions, before vs. after triggers, and a full decision matrix between cloud flows, Business Process Flows, classic workflows, real-time flows, and custom plugins — read this before Project 10. |
 
 ---
 
