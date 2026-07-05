@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Power Automate Cloud Flows Mastery</title>
+<style>
+  :root{ --pa:#0066FF; --border:#E1DFDD; --text:#201F1E; --text-secondary:#605E5C; }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,Roboto,Arial,sans-serif;background:#F3F2F1;color:var(--text);}
+  .hero{background:linear-gradient(120deg,#0066FF 0%,#3d2a8a 100%);color:#fff;padding:48px 24px 56px;text-align:center;}
+  .hero .eyebrow{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#cfe0ff;font-weight:700;}
+  .hero h1{font-size:28px;margin:10px 0;}
+  .hero p{font-size:14px;color:#dbe8ff;max-width:660px;margin:0 auto;line-height:1.6;}
+  .back-link{display:inline-block;margin-top:18px;color:#fff;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 16px;border-radius:20px;font-size:12px;text-decoration:none;}
+
+  .container{max-width:1100px;margin:-30px auto 0;padding:0 24px 60px;}
+
+  .legend{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:22px;}
+  .legend span{font-size:11px;font-weight:700;padding:4px 12px;border-radius:12px;}
+  .legend .beg{background:#DFF6DD;color:#107C10;}
+  .legend .int{background:#FFF1D6;color:#8a6100;}
+  .legend .adv{background:#FDE0CB;color:#8a3800;}
+  .legend .exp{background:#FDE7E9;color:#a80000;}
+  .legend .cap{background:#F3E9FB;color:#742774;}
+  .legend .bon{background:#DEECF9;color:#0a4a80;}
+
+  .section-title{font-size:15px;font-weight:800;margin:28px 0 14px;}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:20px;}
+  .card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 8px 24px rgba(10,20,40,.10);border:1px solid var(--border);display:flex;flex-direction:column;}
+  .card.capstone{grid-column:1/-1;border:2px solid var(--pa);}
+  .card-band{height:6px;}
+  .band-beg{background:#107C10;} .band-int{background:#D9A400;} .band-adv{background:#CA5010;} .band-exp{background:#A80000;} .band-cap{background:linear-gradient(90deg,#0066FF,#5059C9);} .band-bon{background:#0F6CBD;}
+  .card-body{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
+  .tierbadge{font-size:10px;font-weight:800;padding:2px 9px;border-radius:8px;display:inline-block;}
+  .tierbadge.beg{background:#DFF6DD;color:#107C10;} .tierbadge.int{background:#FFF1D6;color:#8a6100;}
+  .tierbadge.adv{background:#FDE0CB;color:#8a3800;} .tierbadge.exp{background:#FDE7E9;color:#a80000;} .tierbadge.cap{background:#F3E9FB;color:#742774;} .tierbadge.bon{background:#DEECF9;color:#0a4a80;}
+  .title{font-size:15px;font-weight:800;margin:8px 0 6px;}
+  .desc{font-size:12px;color:var(--text-secondary);line-height:1.55;flex:1;margin-bottom:14px;}
+  .btn-row{display:flex;gap:8px;}
+  .btn{flex:1;text-align:center;padding:8px 10px;border-radius:7px;font-size:11.5px;font-weight:700;text-decoration:none;}
+  .btn.primary{background:var(--text);color:#fff;}
+  .btn.secondary{background:#F3F2F1;color:var(--text);}
+
+  .guide-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));gap:16px;}
+  .guide-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px 18px;box-shadow:0 4px 14px rgba(0,0,0,.05);}
+  .guide-card .icon{font-size:20px;margin-bottom:6px;}
+  .guide-card .t{font-size:13px;font-weight:800;margin-bottom:6px;}
+  .guide-card .d{font-size:11.5px;color:var(--text-secondary);line-height:1.5;margin-bottom:10px;}
+  .guide-card a{font-size:11.5px;font-weight:700;color:var(--pa);text-decoration:none;}
+
+  .footer{text-align:center;margin-top:36px;font-size:12px;color:var(--text-secondary);}
+  .footer a{color:var(--pa);}
+</style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="eyebrow">Power Automate · Progressive Cloud Flow Training</div>
+    <h1>Power Automate Cloud Flows Mastery</h1>
+    <p>Ten hands-on projects spanning Beginner → Intermediate → Advanced → Expert, plus a capstone and a Dynamics 365 bonus — triggers &amp; conditions, approvals, data operations, premium connectors, error handling, reusable components &amp; AI, enterprise ALM, and process mining.</p>
+    <a class="back-link" href="https://rahul7387.github.io/power-platform-portfolio-hub/">← Back to Portfolio Hub</a>
+  </div>
+
+  <div class="container">
+    <div class="legend">
+      <span class="beg">🟢 Beginner</span><span class="int">🟡 Intermediate</span><span class="adv">🟠 Advanced</span><span class="exp">🔴 Expert</span><span class="cap">⭐ Capstone</span><span class="bon">🔵 Bonus</span>
+    </div>
+
+    <div class="grid">
+
+      <div class="card"><div class="card-band band-beg"></div><div class="card-body">
+        <span class="tierbadge beg">🟢 Beginner · P1</span>
+        <div class="title">Flow Fundamentals</div>
+        <div class="desc">Triggers, actions, and conditions — the pattern every later flow builds on.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/01-beginner-flow-fundamentals/README.md">README</a><a class="btn secondary" href="./projects/01-beginner-flow-fundamentals/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-beg"></div><div class="card-body">
+        <span class="tierbadge beg">🟢 Beginner · P2</span>
+        <div class="title">Approvals &amp; Adaptive Cards</div>
+        <div class="desc">Human-in-the-loop flows with dynamic approver resolution and rich Teams cards.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/02-beginner-approvals-adaptive-cards/README.md">README</a><a class="btn secondary" href="./projects/02-beginner-approvals-adaptive-cards/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-int"></div><div class="card-body">
+        <span class="tierbadge int">🟡 Intermediate · P3</span>
+        <div class="title">Data Ops &amp; Control Flow</div>
+        <div class="desc">Variables, filter-before-loop, Switch branching, and Compose-driven debugging.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/03-intermediate-data-ops-control-flow/README.md">README</a><a class="btn secondary" href="./projects/03-intermediate-data-ops-control-flow/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-int"></div><div class="card-body">
+        <span class="tierbadge int">🟡 Intermediate · P4</span>
+        <div class="title">Connectors &amp; Integration Hub</div>
+        <div class="desc">Dataverse, SQL Server, the on-prem gateway, and authenticated HTTP integration.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/04-intermediate-connectors-integration/README.md">README</a><a class="btn secondary" href="./projects/04-intermediate-connectors-integration/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-adv"></div><div class="card-body">
+        <span class="tierbadge adv">🟠 Advanced · P5</span>
+        <div class="title">Error Handling &amp; Reliability</div>
+        <div class="desc">Try/Catch/Finally Scopes, tuned retries, and durable exception logging.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/05-advanced-error-handling-reliability/README.md">README</a><a class="btn secondary" href="./projects/05-advanced-error-handling-reliability/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-adv"></div><div class="card-body">
+        <span class="tierbadge adv">🟠 Advanced · P6</span>
+        <div class="title">Child Flows, AI Builder &amp; Copilot</div>
+        <div class="desc">Reusable versioned components, confidence-gated AI Builder, and Copilot-authored flows.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/06-advanced-child-flows-ai-builder-copilot/README.md">README</a><a class="btn secondary" href="./projects/06-advanced-child-flows-ai-builder-copilot/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-exp"></div><div class="card-body">
+        <span class="tierbadge exp">🔴 Expert · P7</span>
+        <div class="title">Enterprise ALM &amp; Governance</div>
+        <div class="desc">Solutions, connection references, pipelines, DLP, and Process-license strategy.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/07-expert-alm-governance/README.md">README</a><a class="btn secondary" href="./projects/07-expert-alm-governance/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-exp"></div><div class="card-body">
+        <span class="tierbadge exp">🔴 Expert · P8</span>
+        <div class="title">Process Mining</div>
+        <div class="desc">Object-centric process intelligence turning bottlenecks into funded recommendations.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/08-expert-process-mining/README.md">README</a><a class="btn secondary" href="./projects/08-expert-process-mining/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card capstone"><div class="card-band band-cap"></div><div class="card-body">
+        <span class="tierbadge cap">⭐ Capstone · P9</span>
+        <div class="title">Global Procure-to-Pay Automation Command Center</div>
+        <div class="desc">Every pattern from Projects 1-8 unified into one governed, continuously-improved platform — the flagship project for a leadership demo.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/09-capstone-automation-command-center/README.md">README</a><a class="btn secondary" href="./projects/09-capstone-automation-command-center/index.html">Mockup</a></div>
+      </div></div>
+
+      <div class="card"><div class="card-band band-bon"></div><div class="card-body">
+        <span class="tierbadge bon">🔵 Bonus · P10</span>
+        <div class="title">Dynamics 365 Sales Automation</div>
+        <div class="desc">Filtered Dataverse triggers, command-bar instant flows, and Business Process Flow coexistence.</div>
+        <div class="btn-row"><a class="btn primary" href="./projects/10-bonus-dynamics-365-automation/README.md">README</a><a class="btn secondary" href="./projects/10-bonus-dynamics-365-automation/index.html">Mockup</a></div>
+      </div></div>
+
+    </div>
+
+    <div class="section-title">📖 Deep-dive guides</div>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <div class="icon">🧭</div>
+        <div class="t">Platform Walkthrough</div>
+        <div class="d">A full tour of the product surface — My flows, the designer, connectors, Solutions, Approvals, Process mining, and the admin center.</div>
+        <a href="./guides/power-automate-platform-walkthrough.md">Read the guide →</a>
+      </div>
+      <div class="guide-card">
+        <div class="icon">𝑓(x)</div>
+        <div class="t">Expressions &amp; Functions Reference</div>
+        <div class="d">Every core category of the workflow definition language, with practical, copy-adaptable recipes.</div>
+        <a href="./guides/expressions-and-functions-reference.md">Read the guide →</a>
+      </div>
+      <div class="guide-card">
+        <div class="icon">🔷</div>
+        <div class="t">Dynamics 365 Integration Guide</div>
+        <div class="d">Dataverse vs. legacy connector, filtering attributes, before/after triggers, and a full automation decision matrix.</div>
+        <a href="./guides/dynamics-365-integration-guide.md">Read the guide →</a>
+      </div>
+      <div class="guide-card">
+        <div class="icon">📋</div>
+        <div class="t">Best Practices &amp; Limitations</div>
+        <div class="d">A consolidated checklist of every best practice and platform limitation, plus a licensing quick-reference table.</div>
+        <a href="./BEST-PRACTICES-AND-LIMITATIONS.md">Read the guide →</a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/Rahul7387/power-automate-cloud-flows-mastery">View source on GitHub</a> ·
+      <a href="https://rahul7387.github.io/power-platform-portfolio-hub/">Back to Portfolio Hub</a>
+    </div>
+  </div>
+
+</body>
+</html>
